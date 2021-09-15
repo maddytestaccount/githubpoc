@@ -29,3 +29,6 @@ jobs:
         id: plan
         if: github.event_name == 'push'
         run: terraform plan -no-color
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -auto-approve        
